@@ -1,23 +1,18 @@
-<article class="project-card">
-  <div class="project-media">
-    {{ with .image }}
-    <img src="{{ . | relURL }}" alt="{{ $.title }}" class="project-image">
-    {{ end }}
-  </div>
-  <div class="project-body">
-    <h3 class="text-2xl font-bold text-text-primary-light dark:text-text-primary-dark">{{ .title }}</h3>
-    <div class="mt-3 flex flex-wrap gap-2">
-      {{ range split .tech "," }}
-      <span class="tag-pill">{{ strings.TrimSpace . }}</span>
-      {{ end }}
-    </div>
-    <p class="mt-4 leading-relaxed muted-copy">{{ .description }}</p>
+<article class="project-story additional-project-story{{ if not .image }} project-story--text-only{{ end }}{{ if eq .imageFit "contain" }} project-story--media-contain{{ end }}{{ if .imagePadding }} project-story--media-padded{{ end }}">
+  {{ with .image }}
+  <a class="project-story-media" href="{{ $.link }}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+    <img src="{{ . | relURL }}" alt="" loading="lazy">
+  </a>
+  {{ end }}
+  <div class="project-story-copy">
+    <p class="plain-label">{{ .category }}</p>
+    <h3>{{ .title }}</h3>
+    <p>{{ .description }}</p>
+    <p class="project-tech">{{ .tech }}</p>
     {{ with .link }}
-    <a href="{{ . }}" class="mt-5 inline-flex text-link" target="_blank" rel="noopener noreferrer">{{ T "learnMore" }}</a>
+    <a href="{{ . }}" class="text-link" target="_blank" rel="noopener noreferrer">Open the project</a>
     {{ else }}
-    {{ if .internal }}
-    <span class="mt-5 inline-flex tag-pill">Internal Project</span>
-    {{ end }}
+    {{ if .internal }}<span class="project-private">Internal project · no client data or code published</span>{{ end }}
     {{ end }}
   </div>
 </article>

@@ -68,8 +68,7 @@
         <h2>Capabilities</h2>
         {{ range $capabilitiesData.groups }}
         <div class="mb-5">
-          <p class="resume-meta-label">{{ .key }}</p>
-          <h3 class="mt-2 text-sm font-extrabold text-text-primary-light dark:text-text-primary-dark">{{ .name }}</h3>
+          <h3 class="text-sm font-extrabold text-text-primary-light dark:text-text-primary-dark">{{ .name }}</h3>
           <ul class="resume-sidebar-list mt-2">{{ range .items }}<li>{{ . }}</li>{{ end }}</ul>
         </div>
         {{ end }}

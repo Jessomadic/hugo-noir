@@ -1,21 +1,29 @@
-<article class="case-study-card">
-  <header>
-    <p class="case-study-type">{{ .category }}</p>
+<article class="project-story case-study-story{{ if not .image }} project-story--text-only{{ end }}{{ if eq .imageFit "contain" }} project-story--media-contain{{ end }}{{ if .imagePadding }} project-story--media-padded{{ end }}">
+  {{ with .image }}
+  <div class="project-story-media">
+    <img src="{{ . | relURL }}" alt="{{ $.title }} project preview" loading="lazy">
+  </div>
+  {{ end }}
+  <div class="project-story-copy">
+    <p class="plain-label">{{ .category }}</p>
     <h3>{{ with .shortTitle }}{{ . }}{{ else }}{{ .title }}{{ end }}</h3>
-    <p class="case-study-summary">{{ .description }}</p>
-  </header>
-  <dl class="case-study-details">
-    {{ with .problem }}<div><dt>Problem</dt><dd>{{ . }}</dd></div>{{ end }}
-    {{ with .environment }}<div><dt>Environment</dt><dd>{{ . }}</dd></div>{{ end }}
-    {{ with .actions }}<div><dt>Action</dt><dd>{{ . }}</dd></div>{{ end }}
-    {{ with .result }}<div class="case-study-result"><dt>Result</dt><dd>{{ . }}</dd></div>{{ end }}
-  </dl>
-  <footer>
-    <p class="case-study-tech">{{ .tech }}</p>
+    <p>{{ .description }}</p>
+    {{ with .result }}<p class="project-result"><strong>What changed:</strong> {{ . }}</p>{{ end }}
+    <p class="project-tech">{{ .tech }}</p>
+
+    <details class="project-details">
+      <summary>How it worked</summary>
+      <dl>
+        {{ with .problem }}<div><dt>The problem</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .environment }}<div><dt>The environment</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .actions }}<div><dt>What I did</dt><dd>{{ . }}</dd></div>{{ end }}
+      </dl>
+    </details>
+
     {{ with .link }}
-      <a href="{{ . }}" class="text-link" target="_blank" rel="noopener noreferrer">View repository</a>
+      <a href="{{ . }}" class="text-link" target="_blank" rel="noopener noreferrer">Open the project</a>
     {{ else }}
-      <span class="internal-label">Internal project</span>
+      {{ if .internal }}<span class="project-private">Internal project · no client data or code published</span>{{ end }}
     {{ end }}
-  </footer>
+  </div>
 </article>

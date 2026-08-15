@@ -3,44 +3,29 @@
 {{ $technical := where $experienceData.experience "earlier" "ne" true }}
 {{ $earlier := where $experienceData.experience "earlier" true }}
 <div class="site-shell-wide">
-  <p class="section-kicker">Career history</p>
-  <h1 class="section-title mt-3">{{ .Title }}</h1>
+  <h1 class="section-title">{{ .Title }}</h1>
   <div class="resume-prose mt-5 max-w-3xl text-lg">{{ .Content }}</div>
 
-  <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-    <div class="stat-box">
-      <div class="stat-number">75%</div>
-      <div class="stat-label">Workstation setup time reduction</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-number">~150</div>
-      <div class="stat-label">MSP clients / three-person technical team</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-number">45K / 20K</div>
-      <div class="stat-label">Healthcare employees / devices supported</div>
-    </div>
-  </div>
-
-  <div class="mt-12 space-y-7">
+  <div class="experience-detail-list">
     {{ range $technical }}
-    <article class="timeline-item">
-      <div class="surface-card experience-card p-5 md:p-7">
-        <p class="text-sm font-semibold muted-copy">{{ .company }}</p>
-        <h2 class="mt-1 text-2xl font-extrabold md:text-3xl">{{ if eq .role "Help Desk - IT Analyst" }}Help Desk – IT Analyst{{ else }}{{ .role }}{{ end }}</h2>
-        <p class="mt-1 font-mono text-sm muted-copy">{{ .period }}</p>
-        {{ with .responsibilities }}
-        <div class="resume-prose mt-5">
-          <h3 class="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-accent-light dark:text-accent-dark">Selected impact</h3>
-          <ul>
-            {{ range . }}<li>{{ . }}</li>{{ end }}
-          </ul>
+    <article class="experience-detail">
+      <header>
+        <p class="history-period">{{ .period }}</p>
+        <div>
+          <p class="history-company">{{ .company }}</p>
+          <h2>{{ if eq .role "Help Desk - IT Analyst" }}Help Desk – IT Analyst{{ else }}{{ .role }}{{ end }}</h2>
         </div>
-        {{ end }}
-        {{ with .environment }}
-        <p class="environment-line mt-5"><span>Environment</span>{{ delimit . " · " }}</p>
-        {{ end }}
+      </header>
+      {{ with .responsibilities }}
+      <div class="resume-prose experience-detail-copy">
+        <ul>
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
       </div>
+      {{ end }}
+      {{ with .environment }}
+      <p class="environment-line"><span>Worked with</span>{{ delimit . " · " }}</p>
+      {{ end }}
     </article>
     {{ end }}
   </div>
