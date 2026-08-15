@@ -1,18 +1,33 @@
-<article class="project-story additional-project-story{{ if not .image }} project-story--text-only{{ end }}{{ if eq .imageFit "contain" }} project-story--media-contain{{ end }}{{ if .imagePadding }} project-story--media-padded{{ end }}">
-  {{ with .image }}
-  <a class="project-story-media" href="{{ $.link }}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
-    <img src="{{ . | relURL }}" alt="" loading="lazy">
-  </a>
-  {{ end }}
-  <div class="project-story-copy">
-    <p class="plain-label">{{ .category }}</p>
-    <h3>{{ .title }}</h3>
-    <p>{{ .description }}</p>
-    <p class="project-tech">{{ .tech }}</p>
-    {{ with .link }}
-    <a href="{{ . }}" class="text-link" target="_blank" rel="noopener noreferrer">Open the project</a>
+{{ $project := .project | default . }}
+{{ $headingLevel := .headingLevel | default 3 }}
+{{ $title := $project.title }}
+{{ if and .useShortTitle $project.shortTitle }}{{ $title = $project.shortTitle }}{{ end }}
+<article class="project-card{{ if not $project.image }} project-card--text-only{{ end }}{{ if eq $project.imageFit "contain" }} project-card--media-contain{{ end }}{{ if $project.imagePadding }} project-card--media-padded{{ end }}">
+  {{ with $project.image }}
+    {{ if $project.link }}
+    <a class="project-media" href="{{ $project.link }}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+      <img src="{{ . | relURL }}" alt="" class="project-image" loading="lazy">
+    </a>
     {{ else }}
-    {{ if .internal }}<span class="project-private">Internal project · no client data or code published</span>{{ end }}
+    <div class="project-media" aria-hidden="true">
+      <img src="{{ . | relURL }}" alt="" class="project-image" loading="lazy">
+    </div>
+    {{ end }}
+  {{ end }}
+  <div class="project-body">
+    {{ with $project.category }}<p class="card-label">{{ . }}</p>{{ end }}
+    {{ if eq $headingLevel 2 }}<h2>{{ $title }}</h2>{{ else }}<h3>{{ $title }}</h3>{{ end }}
+    {{ with $project.tech }}
+    <ul class="tag-list" aria-label="Technologies">
+      {{ range split . "," }}<li class="tag-pill">{{ strings.TrimSpace . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+    <p class="project-description">{{ $project.description }}</p>
+    {{ with $project.metricKeys }}{{ partial "metric-evidence.html" (dict "keys" . "class" "project-metrics") }}{{ end }}
+    {{ with $project.link }}
+    <a href="{{ . }}" class="text-link project-link" target="_blank" rel="noopener noreferrer">View project</a>
+    {{ else }}
+      {{ if $project.internal }}<span class="project-private">Internal project</span>{{ end }}
     {{ end }}
   </div>
 </article>

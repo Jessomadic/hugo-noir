@@ -1,0 +1,16 @@
+{{ $metricKeys := .keys }}
+{{ $class := .class | default "metric-evidence" }}
+{{ $metricsData := index site.Data site.Language.Lang "metrics" }}
+{{ if and $metricsData $metricKeys }}
+<ul class="{{ $class }}" aria-label="Evidence and scale">
+  {{ range $metricKeys }}
+    {{ $metricKey := . }}
+    {{ range where $metricsData.metrics "key" $metricKey }}
+    <li>
+      <span>{{ .statement }}</span>
+      {{ with .context }}<small>{{ . }}</small>{{ end }}
+    </li>
+    {{ end }}
+  {{ end }}
+</ul>
+{{ end }}

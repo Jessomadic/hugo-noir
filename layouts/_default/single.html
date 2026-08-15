@@ -1,18 +1,11 @@
 {{ define "main" }}
-<div class="site-shell">
-  <article class="surface-card p-6 md:p-8">
-    <h1 class="section-title mb-4 text-text-primary-light dark:text-text-primary-dark">{{ .Title }}</h1>
+<article class="site-shell detail-page">
+  <div class="surface-card article-card">
+    <h1 class="section-title">{{ .Title }}</h1>
     {{ if eq .Section "blogs" }}
-    <div class="mb-8 flex flex-wrap items-center gap-3 muted-copy">
-      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
-      {{ range .Params.tags }}
-      <span class="tag-pill">{{ . }}</span>
-      {{ end }}
-    </div>
+      <time class="article-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
     {{ end }}
-    <div class="resume-prose">
-      {{ .Content }}
-    </div>
-  </article>
-</div>
+    <div class="resume-prose article-content">{{ .Content }}</div>
+  </div>
+</article>
 {{ end }}

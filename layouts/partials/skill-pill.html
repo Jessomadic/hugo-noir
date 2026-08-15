@@ -1,10 +1,8 @@
-<div class="carousel-item">
+<li class="carousel-item">
   {{ if eq .type "image" }}
-  <img src="{{ .icon | relURL }}" alt="{{ .name }}" class="skill-img-icon">
-  {{ else if eq .type "devicon" }}
-  <i class="{{ .icon }} skill-img-icon" aria-hidden="true"></i>
+  <img src="{{ .icon | relURL }}" alt="" class="skill-img-icon" aria-hidden="true">
   {{ else if eq .type "svg" }}
-  <span class="skill-img-icon">{{ .icon | safeHTML }}</span>
+  <span class="skill-img-icon" aria-hidden="true">{{ .icon | safeHTML }}</span>
   {{ end }}
   <span class="skill-name-text">{{ .name }}</span>
-</div>
+</li>

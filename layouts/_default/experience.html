@@ -1,46 +1,26 @@
 {{ define "main" }}
 {{ $experienceData := index site.Data .Language.Lang "experience" }}
-{{ $technical := where $experienceData.experience "earlier" "ne" true }}
-{{ $earlier := where $experienceData.experience "earlier" true }}
-<div class="site-shell-wide">
+<div class="site-shell detail-page">
   <h1 class="section-title">{{ .Title }}</h1>
-  <div class="resume-prose mt-5 max-w-3xl text-lg">{{ .Content }}</div>
+  <div class="surface-card page-intro resume-prose">{{ .Content }}</div>
 
-  <div class="experience-detail-list">
-    {{ range $technical }}
-    <article class="experience-detail">
-      <header>
-        <p class="history-period">{{ .period }}</p>
-        <div>
-          <p class="history-company">{{ .company }}</p>
-          <h2>{{ if eq .role "Help Desk - IT Analyst" }}Help Desk – IT Analyst{{ else }}{{ .role }}{{ end }}</h2>
+  <div class="experience-timeline">
+    {{ range $experienceData.experience }}
+    <article class="timeline-item experience-card">
+      <div class="surface-card experience-card-inner">
+        <p class="timeline-company">{{ .company }}</p>
+        <h2>{{ .displayRole | default .role }}</h2>
+        <p class="timeline-period">{{ .period }}</p>
+        {{ with .responsibilities }}
+        <div class="resume-prose experience-copy">
+          <ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
         </div>
-      </header>
-      {{ with .responsibilities }}
-      <div class="resume-prose experience-detail-copy">
-        <ul>
-          {{ range . }}<li>{{ . }}</li>{{ end }}
-        </ul>
+        {{ end }}
+        {{ with .metricKeys }}{{ partial "metric-evidence.html" (dict "keys" . "class" "experience-metrics") }}{{ end }}
+        {{ with .environment }}<p class="environment-line"><strong>Worked with:</strong> {{ delimit . " · " }}</p>{{ end }}
       </div>
-      {{ end }}
-      {{ with .environment }}
-      <p class="environment-line"><span>Worked with</span>{{ delimit . " · " }}</p>
-      {{ end }}
     </article>
     {{ end }}
   </div>
-
-  {{ if gt (len $earlier) 0 }}
-  <details class="earlier-experience">
-    <summary>Earlier experience</summary>
-    <div>
-      {{ range $earlier }}
-      <p class="font-semibold text-text-primary-light dark:text-text-primary-dark">{{ .role }} · {{ .company }}</p>
-      <p class="mt-1 font-mono text-xs muted-copy">{{ .period }}</p>
-      {{ with .responsibilities }}<p class="mt-3 text-sm leading-relaxed muted-copy">{{ delimit . " " }}</p>{{ end }}
-      {{ end }}
-    </div>
-  </details>
-  {{ end }}
 </div>
 {{ end }}

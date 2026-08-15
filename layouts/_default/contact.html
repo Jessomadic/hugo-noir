@@ -1,37 +1,37 @@
 {{ define "main" }}
 {{ $author := index site.Data .Language.Lang "author" }}
-<div class="site-shell">
+<div class="site-shell detail-page">
   <h1 class="section-title">{{ .Title }}</h1>
-  <div class="resume-prose mt-5 max-w-3xl text-lg">{{ .Content }}</div>
+  <div class="surface-card page-intro resume-prose">{{ .Content }}</div>
 
-  <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+  <div class="contact-grid">
     <a href="mailto:{{ $author.social.email }}" class="contact-link">
-      <svg class="h-7 w-7 shrink-0 muted-copy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
-      <span class="min-w-0"><span class="block font-bold text-text-primary-light dark:text-text-primary-dark">Email</span><span class="block truncate font-mono text-xs muted-copy">{{ $author.social.email }}</span></span>
+      <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+      <span><strong>Email</strong><small>{{ $author.social.email }}</small></span>
     </a>
     <a href="{{ $author.social.linkedin }}" target="_blank" rel="noopener noreferrer" class="contact-link">
-      <svg class="h-7 w-7 shrink-0 muted-copy" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.47 2H3.53a1.45 1.45 0 0 0-1.47 1.43v17.14A1.45 1.45 0 0 0 3.53 22h16.94a1.45 1.45 0 0 0 1.47-1.43V3.43A1.45 1.45 0 0 0 20.47 2ZM8.09 18.74h-3v-9h3ZM6.59 8.48a1.56 1.56 0 1 1 0-3.12 1.57 1.57 0 1 1 0 3.12Zm12.32 10.26h-3v-4.83c0-1.21-.43-2-1.52-2A1.65 1.65 0 0 0 12.85 13a2 2 0 0 0-.1.73v5h-3v-9h3V11a3 3 0 0 1 2.71-1.5c2 0 3.45 1.29 3.45 4.06Z"/></svg>
-      <span class="min-w-0"><span class="block font-bold text-text-primary-light dark:text-text-primary-dark">LinkedIn</span><span class="block truncate font-mono text-xs muted-copy">jesse-copas-50339b174</span></span>
+      <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.47 2H3.53a1.45 1.45 0 0 0-1.47 1.43v17.14A1.45 1.45 0 0 0 3.53 22h16.94a1.45 1.45 0 0 0 1.47-1.43V3.43A1.45 1.45 0 0 0 20.47 2ZM8.09 18.74h-3v-9h3ZM6.59 8.48a1.56 1.56 0 1 1 0-3.12 1.57 1.57 0 1 1 0 3.12Zm12.32 10.26h-3v-4.83c0-1.21-.43-2-1.52-2A1.65 1.65 0 0 0 12.85 13a2 2 0 0 0-.1.73v5h-3v-9h3V11a3 3 0 0 1 2.71-1.5c2 0 3.45 1.29 3.45 4.06Z"/></svg>
+      <span><strong>LinkedIn</strong><small>Professional profile</small></span>
     </a>
     <a href="{{ $author.social.github }}" target="_blank" rel="noopener noreferrer" class="contact-link">
-      <svg class="h-7 w-7 shrink-0 muted-copy" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.014-1.7-2.782.604-3.369-1.342-3.369-1.342-.455-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.071 1.532 1.031 1.532 1.031.892 1.529 2.341 1.087 2.91.831.091-.646.349-1.087.635-1.337-2.221-.253-4.555-1.111-4.555-4.944 0-1.092.39-1.985 1.03-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.563 9.563 0 0 1 12 6.831a9.6 9.6 0 0 1 2.504.337c1.909-1.294 2.748-1.025 2.748-1.025.545 1.377.202 2.394.099 2.647.641.698 1.029 1.591 1.029 2.683 0 3.842-2.337 4.688-4.565 4.936.359.309.678.92.678 1.855 0 1.337-.012 2.418-.012 2.747 0 .268.18.579.688.481A10.003 10.003 0 0 0 22 12c0-5.523-4.477-10-10-10Z"/></svg>
-      <span class="min-w-0"><span class="block font-bold text-text-primary-light dark:text-text-primary-dark">GitHub</span><span class="block truncate font-mono text-xs muted-copy">Jessomadic</span></span>
+      <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.014-1.7-2.782.604-3.369-1.342-3.369-1.342-.455-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.071 1.532 1.031 1.532 1.031.892 1.529 2.341 1.087 2.91.831.091-.646.349-1.087.635-1.337-2.221-.253-4.555-1.111-4.555-4.944 0-1.092.39-1.985 1.03-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.563 9.563 0 0 1 12 6.831a9.6 9.6 0 0 1 2.504.337c1.909-1.294 2.748-1.025 2.748-1.025.545 1.377.202 2.394.099 2.647.641.698 1.029 1.591 1.029 2.683 0 3.842-2.337 4.688-4.565 4.936.359.309.678.92.678 1.855 0 1.337-.012 2.418-.012 2.747 0 .268.18.579.688.481A10.003 10.003 0 0 0 22 12c0-5.523-4.477-10-10-10Z"/></svg>
+      <span><strong>GitHub</strong><small>Projects and source code</small></span>
     </a>
-    <div class="contact-link">
-      <svg class="h-7 w-7 shrink-0 muted-copy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.25 7-12a7 7 0 1 0-14 0c0 6.75 7 12 7 12Z"/><circle cx="12" cy="9" r="2.25"/></svg>
-      <span class="min-w-0"><span class="block font-bold text-text-primary-light dark:text-text-primary-dark">Location &amp; availability</span><span class="block font-mono text-xs leading-relaxed muted-copy">{{ $author.location }} · {{ $author.timezone }}<br>{{ $author.availability }}</span></span>
+    <div class="contact-detail">
+      <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.25 7-12a7 7 0 1 0-14 0c0 6.75 7 12 7 12Z"/><circle cx="12" cy="9" r="2.25"/></svg>
+      <span><strong>Location and availability</strong><small>{{ $author.location }} · {{ $author.timezone }}<br>{{ $author.availability }}</small></span>
     </div>
   </div>
 
-  <div class="contact-band mt-10">
+  <section class="surface-card resume-callout" aria-labelledby="contact-resume-heading">
     <div>
-      <h2>Résumé</h2>
-      <p>Download the PDF or read it in your browser.</p>
+      <h2 id="contact-resume-heading">Résumé</h2>
+      <p>Download the PDF or read the accessible web version.</p>
     </div>
     <div class="action-row">
       <a href="{{ .Site.Params.resume_pdf | relURL }}" class="primary-action" download>Download résumé</a>
       <a href="{{ "resume/" | relLangURL }}" class="secondary-action">HTML résumé</a>
     </div>
-  </div>
+  </section>
 </div>
 {{ end }}

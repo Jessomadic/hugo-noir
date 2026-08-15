@@ -1,19 +1,15 @@
 {{ $author := index site.Data .Language.Lang "author" }}
-<footer class="mt-24">
-  <div class="mx-auto w-full max-w-6xl px-4 pb-10">
-    <div class="flex flex-col justify-between gap-5 border-t border-border-primary-light pt-6 text-sm text-text-secondary-light dark:border-border-primary-dark dark:text-text-secondary-dark md:flex-row md:items-end">
-      <div class="footer-maker">
-        <p class="font-bold text-text-primary-light dark:text-text-primary-dark">&copy; {{ now.Format "2006" }} {{ $author.name }}</p>
-        <p class="mt-2">
-          Built using <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" class="text-link">Hugo</a>.
-          Take a look at my <a href="{{ $author.social.github }}" target="_blank" rel="noopener noreferrer" class="text-link">GitHub</a>.
-        </p>
-      </div>
-      <nav class="footer-links flex flex-wrap gap-4" aria-label="Footer navigation">
-        <a href="{{ "contact/" | relLangURL }}" class="text-link">Contact me</a>
-        <a href="{{ "resume/" | relLangURL }}" class="text-link">Résumé</a>
-        <a href="{{ .Site.Params.resume_pdf | relURL }}" class="text-link" download>Download PDF</a>
-      </nav>
-    </div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; {{ now.Format "2006" }} {{ $author.name }}</p>
+    <p>
+      Built using <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" class="animated-link">Hugo</a>.
+      Take a look at my <a href="{{ $author.social.github }}" target="_blank" rel="noopener noreferrer" class="animated-link">GitHub</a>.
+    </p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="{{ "contact/" | relLangURL }}" class="text-link">Contact</a>
+      <a href="{{ "resume/" | relLangURL }}" class="text-link">HTML résumé</a>
+      <a href="{{ .Site.Params.resume_pdf | relURL }}" class="text-link" download>Download PDF</a>
+    </nav>
   </div>
 </footer>

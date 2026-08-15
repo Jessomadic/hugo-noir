@@ -1,38 +1,30 @@
 {{ define "main" }}
-<div class="site-shell">
-  <h1 class="section-title">{{ .Title }}</h1>
-  <div class="resume-prose mt-5 max-w-3xl text-lg">{{ .Content }}</div>
+<div class="site-shell detail-page">
+  <h1 class="section-title centered-heading">{{ .Title }}</h1>
+  <div class="certification-intro resume-prose">{{ .Content }}</div>
 
-  <section class="mt-12" aria-labelledby="certifications-heading">
-    <h2 id="certifications-heading" class="mb-5 text-2xl font-extrabold text-text-primary-light dark:text-text-primary-dark">Certifications</h2>
+  <section class="credential-section" aria-labelledby="certifications-heading">
+    <h2 id="certifications-heading" class="subsection-title">Certifications</h2>
     <div class="credential-grid">
       {{ range .Site.Params.certifications }}
       <article class="surface-card credential-card">
-        <h3 class="text-xl font-extrabold text-text-primary-light dark:text-text-primary-dark">{{ .title }}</h3>
-        <p class="credential-meta">Issuer · {{ .issuer }}</p>
-        {{ with .issue_date }}<p class="credential-meta">Issued · {{ . }}</p>{{ end }}
-        {{ with .expiration_date }}<p class="credential-meta">Expires · {{ . }}</p>{{ end }}
-        {{ with .credential_id }}<p class="credential-meta">Credential · {{ . }}</p>{{ end }}
-        {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex text-link">Verify credential</a>{{ end }}
+        <h3>{{ .title }}</h3>
+        <p>{{ .issuer }}</p>
       </article>
       {{ end }}
     </div>
   </section>
 
-  <section class="mt-12" aria-labelledby="training-heading">
-    <h2 id="training-heading" class="mb-5 text-2xl font-extrabold text-text-primary-light dark:text-text-primary-dark">Training</h2>
-    <div class="training-grid">
+  <section class="credential-section" aria-labelledby="training-heading">
+    <h2 id="training-heading" class="subsection-title">Training</h2>
+    <div class="credential-grid">
       {{ range .Site.Params.training }}
       <article class="surface-card credential-card">
-        <h3 class="text-xl font-extrabold text-text-primary-light dark:text-text-primary-dark">{{ .title }}</h3>
-        <p class="credential-meta">Provider · {{ .issuer }}</p>
-        {{ with .issue_date }}<p class="credential-meta">Completed · {{ . }}</p>{{ end }}
-        {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex text-link">View course</a>{{ end }}
+        <h3>{{ .title }}</h3>
+        <p>{{ .issuer }}</p>
       </article>
       {{ end }}
     </div>
   </section>
-
-  <p class="mt-8 text-sm leading-relaxed muted-copy">Public verification details are included when they are available.</p>
 </div>
 {{ end }}

@@ -1,31 +1,13 @@
 {{ define "main" }}
 {{ $projectsData := index site.Data .Language.Lang "projects" }}
-{{ $infrastructure := where $projectsData.projects "infrastructure" true }}
-{{ $additional := where $projectsData.projects "infrastructure" "ne" true }}
-<div class="site-shell-wide">
+<div class="site-shell detail-page">
   <h1 class="section-title">{{ .Title }}</h1>
-  <div class="resume-prose mt-5 max-w-3xl text-lg">{{ .Content }}</div>
+  <div class="surface-card page-intro resume-prose">{{ .Content }}</div>
 
-  <section class="mt-12" aria-labelledby="case-studies-heading">
-    <div class="section-heading-row">
-      <div>
-        <h2 id="case-studies-heading" class="section-heading">Projects from work</h2>
-      </div>
-    </div>
-    <div class="case-study-grid">
-      {{ range $infrastructure }}{{ partial "case-study-card.html" . }}{{ end }}
-    </div>
-  </section>
-
-  <section class="section-block" aria-labelledby="additional-projects-heading">
-    <div class="section-heading-row">
-      <div>
-        <h2 id="additional-projects-heading" class="section-heading">Other things I've built</h2>
-      </div>
-    </div>
-    <div class="project-grid">
-      {{ range $additional }}{{ partial "project-card.html" . }}{{ end }}
-    </div>
-  </section>
+  <div class="project-grid project-index-grid">
+    {{ range $projectsData.projects }}
+      {{ partial "project-card.html" (dict "project" . "headingLevel" 2) }}
+    {{ end }}
+  </div>
 </div>
 {{ end }}
