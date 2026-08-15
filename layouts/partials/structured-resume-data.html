@@ -1,0 +1,98 @@
+{{- $lang := .Language.Lang | default "en" -}}
+{{- $data := index site.Data $lang -}}
+{{- $author := $data.author -}}
+{{- $capabilitiesData := $data.capabilities -}}
+{{- $experienceData := $data.experience -}}
+{{- $projectsData := $data.projects -}}
+{{- $personId := printf "%s#person" .Site.BaseURL -}}
+{{- $profileId := printf "%s#profile" .Site.BaseURL -}}
+{{- $skills := slice -}}
+{{- with $capabilitiesData.groups -}}
+  {{- range . -}}
+    {{- range .items -}}{{- $skills = $skills | append . -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $capabilitiesData.additional -}}
+  {{- range . -}}{{- $skills = $skills | append . -}}{{- end -}}
+{{- end -}}
+{{- $works := slice -}}
+{{- with $experienceData.experience -}}
+  {{- range . -}}
+    {{- $works = $works | append (dict
+      "@type" "OrganizationRole"
+      "roleName" .role
+      "memberOf" (dict "@type" "Organization" "name" .company)
+      "description" (delimit .responsibilities " ")
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $projects := slice -}}
+{{- with $projectsData.projects -}}
+  {{- range . -}}
+    {{- $project := dict
+      "@type" "SoftwareSourceCode"
+      "name" .title
+      "description" .description
+      "programmingLanguage" .tech
+      "creator" (dict "@id" $personId)
+    -}}
+    {{- with .link -}}
+      {{- $project = merge $project (dict "codeRepository" .) -}}
+    {{- else -}}
+      {{- $project = merge $project (dict "conditionsOfAccess" "Internal project; details are summarized without private implementation data") -}}
+    {{- end -}}
+    {{- $projects = $projects | append $project -}}
+  {{- end -}}
+{{- end -}}
+{{- $credentials := slice -}}
+{{- range .Site.Params.certifications -}}
+  {{- $credential := dict
+    "@type" "EducationalOccupationalCredential"
+    "name" .title
+    "credentialCategory" "Certification"
+    "recognizedBy" (dict "@type" "Organization" "name" .issuer)
+  -}}
+  {{- $credentials = $credentials | append $credential -}}
+{{- end -}}
+{{- range .Site.Params.training -}}
+  {{- $credential := dict
+    "@type" "EducationalOccupationalCredential"
+    "name" .title
+    "credentialCategory" "Training"
+    "recognizedBy" (dict "@type" "Organization" "name" .issuer)
+  -}}
+  {{- $credentials = $credentials | append $credential -}}
+{{- end -}}
+{{- $sameAs := slice $author.social.github $author.social.linkedin -}}
+{{- $person := dict
+  "@type" "Person"
+  "@id" $personId
+  "name" $author.name
+  "email" (printf "mailto:%s" $author.social.email)
+  "url" .Site.BaseURL
+  "jobTitle" $author.role
+  "description" $author.description
+  "address" (dict "@type" "PostalAddress" "addressLocality" "Rochester" "addressRegion" "NY" "addressCountry" "US")
+  "sameAs" $sameAs
+  "knowsAbout" $skills
+  "hasOccupation" (dict "@type" "Occupation" "name" $author.role "occupationLocation" (dict "@type" "City" "name" "Rochester, NY") "skills" (delimit $skills ", "))
+  "memberOf" $works
+  "hasCredential" $credentials
+-}}
+{{- $profile := dict
+  "@type" "ProfilePage"
+  "@id" $profileId
+  "url" .Permalink
+  "name" (cond .IsHome .Site.Title (printf "%s | Jesse Copas" .Title))
+  "description" (.Description | default .Site.Params.description)
+  "mainEntity" (dict "@id" $personId)
+  "dateModified" "2026-08-15"
+-}}
+{{- $projectList := dict
+  "@type" "ItemList"
+  "@id" (printf "%s#projects" .Site.BaseURL)
+  "name" "Infrastructure and technical projects"
+  "itemListElement" $projects
+-}}
+{{- $graph := dict "@context" "https://schema.org" "@graph" (slice $profile $person $projectList) -}}
+<script type="application/ld+json">{{ $graph | jsonify (dict "indent" "  ") | safeJS }}</script>

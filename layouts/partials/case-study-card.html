@@ -1,0 +1,21 @@
+<article class="case-study-card">
+  <header>
+    <p class="case-study-type">{{ .category }}</p>
+    <h3>{{ with .shortTitle }}{{ . }}{{ else }}{{ .title }}{{ end }}</h3>
+    <p class="case-study-summary">{{ .description }}</p>
+  </header>
+  <dl class="case-study-details">
+    {{ with .problem }}<div><dt>Problem</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .environment }}<div><dt>Environment</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .actions }}<div><dt>Action</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .result }}<div class="case-study-result"><dt>Result</dt><dd>{{ . }}</dd></div>{{ end }}
+  </dl>
+  <footer>
+    <p class="case-study-tech">{{ .tech }}</p>
+    {{ with .link }}
+      <a href="{{ . }}" class="text-link" target="_blank" rel="noopener noreferrer">View repository</a>
+    {{ else }}
+      <span class="internal-label">Internal project</span>
+    {{ end }}
+  </footer>
+</article>
