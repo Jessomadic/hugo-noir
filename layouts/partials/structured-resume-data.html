@@ -29,15 +29,22 @@
 {{- $projects := slice -}}
 {{- with $projectsData.projects -}}
   {{- range . -}}
+    {{- $schemaType := .schemaType | default "SoftwareSourceCode" -}}
     {{- $project := dict
-      "@type" "SoftwareSourceCode"
+      "@type" $schemaType
       "name" .title
       "description" .description
-      "programmingLanguage" .tech
       "creator" (dict "@id" $personId)
     -}}
+    {{- if eq $schemaType "SoftwareSourceCode" -}}
+      {{- $project = merge $project (dict "programmingLanguage" .tech) -}}
+    {{- end -}}
     {{- with .link -}}
-      {{- $project = merge $project (dict "codeRepository" .) -}}
+      {{- if eq $schemaType "SoftwareSourceCode" -}}
+        {{- $project = merge $project (dict "codeRepository" .) -}}
+      {{- else -}}
+        {{- $project = merge $project (dict "url" .) -}}
+      {{- end -}}
     {{- else -}}
       {{- $project = merge $project (dict "conditionsOfAccess" "Internal project; details are summarized without private implementation data") -}}
     {{- end -}}
