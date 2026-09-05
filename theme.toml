@@ -7,7 +7,7 @@ description = "A clean, minimalistic theme for Hugo with a focus on readability 
 homepage = "https://github.com/prxshetty/hugo-noir"
 
 # If you have a running demo of the theme
-demosite = "https://pranamshetty.dev"
+demosite = "https://prxshetty.github.io/hugo-portfolio/"
 
 tags = ["blog", "minimalist", "responsive", "tailwind", "clean", "light", "personal", "dark"]
 features = ["responsive", "tailwind css", "minimalist", "blog", "clean design", "fast", "seo-friendly"]

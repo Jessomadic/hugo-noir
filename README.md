@@ -1,4 +1,4 @@
-<h1 align=center>Hugo Noir | <a href="https://pranamshetty.dev" rel="nofollow">Demo</a></h1>
+<h1 align=center>Hugo Noir | <a href="https://prxshetty.github.io/hugo-portfolio/" rel="nofollow">Demo</a></h1>
 
 <h4 align=center>🌑 Dark | ⚪️ Light | 🔍 Minimalist | 📱 Responsive | ⚡ Fast</h4>
 <br>
@@ -32,33 +32,15 @@ A clean, minimalistic theme for Hugo with a focus on readability, simplicity, an
 - Subtle hyperlink indicators (SVGs)
 - Engaging criss-cross carousel animations
 
-## Light & Dark Mode Showcase
+## Preview
 
-Here's a glimpse of the theme in both light and dark modes:
+Here's a glimpse of the theme homepage:
 
 **Homepage (Dark Mode - Primary):**
 ![Hugo Noir Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/screenshot.png)
 
 **Homepage (Light Mode):**
 ![Hugo Noir Light Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/home_light.png)
-
-**Projects Page (Dark Mode):**
-![Hugo Noir Projects Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/project_dark.png)
-
-**Projects Page (Light Mode):**
-![Hugo Noir Projects Light Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/project_light.png)
-
-**Experience Page (Dark Mode):**
-![Hugo Noir Experience Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/experience_dark.png)
-
-**Experience Page (Light Mode):**
-![Hugo Noir Experience Light Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/experience_light.png)
-
-**Contact Page (Dark Mode):**
-![Hugo Noir Contact Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/contact_dark.png)
-
-**Contact Page (Light Mode):**
-![Hugo Noir Contact Light Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/contact_light.png)
 
 ## Installation
 
