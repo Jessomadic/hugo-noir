@@ -28,11 +28,11 @@
         </div>
     </div>
     <div class="space-y-8">
-        {{ $experienceData := index site.Data .Language.Lang "experience" }}
+        {{ $experienceData := index hugo.Data .Language.Lang "experience" }}
         {{ with $experienceData.experience }}
             {{ range . }}
-            <div class="group relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:w-[2px] before:h-full before:bg-border-secondary-light dark:before:bg-border-secondary-dark before:rounded-full">
-                <div class="absolute -left-1.5 top-0 w-2 h-2 bg-border-secondary-light dark:bg-border-secondary-dark rounded-full"></div>
+            <div class="group relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:w-[2px] before:h-full before:bg-border-primary-light dark:before:bg-border-primary-dark before:rounded-full">
+                <div class="absolute -left-1.5 top-0 w-2 h-2 bg-border-primary-light dark:bg-border-primary-dark rounded-full"></div>
                 <div class="p-6 rounded-lg bg-bg-primary-light dark:bg-bg-secondary-dark transition-all duration-300 border border-border-primary-light dark:border-border-primary-dark">
                     <div class="flex-grow">
                         {{ if .company }}
@@ -76,7 +76,7 @@
                         {{ if .technologies }}
                         <div class="mt-4 flex flex-wrap gap-2">
                             {{ range .technologies }}
-                            <span class="px-3 py-1 text-sm bg-bg-primary-light dark:bg-bg-tertiary-dark text-text-secondary-light dark:text-text-secondary-dark rounded-full">{{ . }}</span>
+                            <span class="px-3 py-1 text-sm bg-bg-primary-light dark:bg-bg-secondary-dark text-text-secondary-light dark:text-text-secondary-dark rounded-full">{{ . }}</span>
                             {{ end }}
                         </div>
                         {{ end }}                        
@@ -185,11 +185,11 @@
     }
 
     .stat-box {
-        @apply bg-bg-primary-light dark:bg-bg-tertiary-dark p-4 rounded-lg border border-border-primary-light dark:border-border-primary-dark flex-1 min-w-[120px] text-center transition-all duration-300;
+        @apply bg-bg-primary-light dark:bg-bg-secondary-dark p-4 rounded-lg border border-border-primary-light dark:border-border-primary-dark flex-1 min-w-[120px] text-center transition-all duration-300;
     }
     
     .stat-box:hover {
-        @apply border-accent-light dark:border-accent-dark bg-bg-primary-light dark:bg-bg-tertiary-dark;
+        @apply border-accent-light dark:border-accent-dark bg-bg-primary-light dark:bg-bg-secondary-dark;
         transform: translateY(-2px);
     }
     

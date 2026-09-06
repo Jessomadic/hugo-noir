@@ -50,10 +50,11 @@
     <div class="max-w-6xl mx-auto px-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div class="flex justify-between items-center">
-                {{ $authorData := index site.Data .Language.Lang "author" }}
+                {{ $authorData := index hugo.Data .Language.Lang "author" }}
                 {{ $author := cond (and $authorData $authorData.author) $authorData.author site.Params }}
+                {{ $homePermalink := site.Home.Permalink }}
                 {{ with $author }}
-                <a href="{{ absLangURL .Site.BaseURL }}" class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-300">
+                <a href="{{ $homePermalink }}" class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-300">
                     {{ .name }}
                 </a>
                 {{ end }}
@@ -84,18 +85,7 @@
                         </svg>
                     </div>
                     <div class="language-dropdown">
-                        {{ range .Site.Languages }}
-                            {{ $translation := "" }}
-                            {{ $foundTranslations := where $.Page.Translations "Lang" .Lang }}
-                            {{ if $foundTranslations }}
-                                {{ $translation = index $foundTranslations 0 }}
-                            {{ end }}
-                            {{ $isCurrentLang := eq .Lang $.Language.Lang }}
-                            <a href="{{ if $translation }}{{ $translation.Permalink }}{{ else }}{{ .Lang | absLangURL }}{{ end }}" 
-                               class="{{ if $isCurrentLang }}language-active{{ end }} text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-300">
-                                {{ .LanguageName }}
-                            </a>
-                        {{ end }}
+                        {{ partial "language-switcher.html" $.Page }}
                     </div>
                 </div>
                 <button id="theme-toggle-button-desktop" class="ml-4 inline-block text-lg text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-300 p-2 rounded-md">
@@ -111,7 +101,7 @@
     </div>
 
     <!-- Mobile Navigation Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-bg-secondary-light dark:bg-bg-secondary-dark z-50 hidden transition-all duration-300 backdrop-blur-2xl">
+    <div id="mobile-menu" class="fixed inset-0 bg-bg-primary-light dark:bg-bg-secondary-dark z-50 hidden transition-all duration-300 backdrop-blur-2xl">
         <div class="flex flex-col h-full">
             <div class="flex justify-between items-center p-6">
                 <span class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">{{ T "menuTitle" }}</span>
@@ -125,18 +115,7 @@
                             </svg>
                         </div>
                         <div class="language-dropdown">
-                            {{ range .Site.Languages }}
-                                {{ $translation := "" }}
-                                {{ $foundTranslationsMobile := where $.Page.Translations "Lang" .Lang }}
-                                {{ if $foundTranslationsMobile }}
-                                    {{ $translation = index $foundTranslationsMobile 0 }}
-                                {{ end }}
-                                {{ $isCurrentLang := eq .Lang $.Language.Lang }}
-                                <a href="{{ if $translation }}{{ $translation.Permalink }}{{ else }}{{ .Lang | absLangURL }}{{ end }}" 
-                                   class="{{ if $isCurrentLang }}language-active{{ end }} text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-300">
-                                    {{ .LanguageName }}
-                                </a>
-                            {{ end }}
+                            {{ partial "language-switcher.html" $.Page }}
                         </div>
                     </div>
                     <button id="theme-toggle-button-mobile" class="text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors duration-300 flex items-center p-2 rounded-md">

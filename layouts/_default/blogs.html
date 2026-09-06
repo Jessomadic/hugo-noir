@@ -3,7 +3,7 @@
     <h1 class="text-5xl font-bold mb-12 text-text-primary-light dark:text-text-primary-dark">{{ .Title }}</h1>
     
     <div class="space-y-12 max-w-3xl mx-auto">
-        {{ $blogsData := index site.Data .Language.Lang "blogs" }}
+        {{ $blogsData := index hugo.Data .Language.Lang "blogs" }}
         {{ range $blogsData.blogs }}
         <div class="group">
             <p class="text-text-secondary-light dark:text-text-secondary-dark text-sm mb-2">{{ .date }}</p>
@@ -19,7 +19,7 @@
             <div class="flex flex-wrap gap-2">
                 {{ range .tags }}
                 {{ if ne . "" }}
-                <span class="px-2 py-1 text-xs bg-bg-primary-light dark:bg-bg-tertiary-dark text-text-secondary-light dark:text-text-secondary-dark border border-border-primary-light dark:border-border-primary-dark rounded-md transition-all duration-300">{{ . }}</span>
+                <span class="px-2 py-1 text-xs bg-bg-primary-light dark:bg-bg-secondary-dark text-text-secondary-light dark:text-text-secondary-dark border border-border-primary-light dark:border-border-primary-dark rounded-md transition-all duration-300">{{ . }}</span>
                 {{ end }}
                 {{ end }}
             </div>

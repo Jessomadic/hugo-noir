@@ -5,7 +5,7 @@
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/prxshetty/hugo-noir)](https://github.com/prxshetty/hugo-noir/releases/latest)
 [![View Changelog](https://img.shields.io/badge/changelog-view-blue)](CHANGELOG.md)
-[![Minimum Hugo Version](https://img.shields.io/static/v1?label=min-HUGO-version&message=>=v0.92.0&color=blue&logo=hugo)](https://github.com/gohugoio/hugo/releases/tag/v0.92.0)
+[![Minimum Hugo Version](https://img.shields.io/static/v1?label=min-HUGO-version&message=>=v0.158.0&color=blue&logo=hugo)](https://github.com/gohugoio/hugo/releases/tag/v0.158.0)
 [![GitHub stars](https://img.shields.io/github/stars/prxshetty/hugo-noir?style=social)](https://github.com/prxshetty/hugo-noir/stargazers)
 [![Hugo Themes](https://img.shields.io/badge/Hugo--Themes-@Dark_Noir-blue)](https://themes.gohugo.io/themes/hugo-noir/)
 
@@ -44,7 +44,7 @@ Here's a glimpse of the theme homepage:
 
 ## Installation
 
-Ensure you have Hugo installed (Extended version, v0.92.0 or newer is recommended).
+Ensure you have Hugo installed (Extended version, v0.158.0 or newer).
 
 For a quick start and to see a full configuration example, you can refer to the `hugo.example.toml` file included in the theme's root directory. You can copy this file to your site's root as `hugo.toml` (or `config.toml`) and customize it.
 
@@ -66,6 +66,20 @@ Then, update your submodules:
 git submodule update --init --recursive
 ```
 
+### CSS Build
+
+**Theme users:** no action needed. The theme ships a prebuilt stylesheet at `static/css/tailwind.css` (Tailwind + Typography plugin, used for Markdown rendering in blog posts) that works out of the box. You do **not** need Node.js or npm to install and use the theme.
+
+**Theme developers/customizers:** only rebuild the CSS when you change the theme's Tailwind configuration, `assets/css/main.css`, or add new Tailwind classes in templates:
+
+```bash
+# From the theme directory (themes/hugo-noir)
+npm install
+npx tailwindcss -i assets/css/main.css -o static/css/tailwind.css --minify
+```
+
+> **Upgrading from earlier versions:** this release raises the minimum Hugo version to **v0.158.0 (Extended)**, replaces the Tailwind CDN with a committed compiled stylesheet, and removes the redundant color aliases `bg-secondary-light`, `bg-tertiary-light`, `bg-tertiary-dark`, `border-secondary-light`, and `border-secondary-dark` (templates now use the `primary` equivalents — same rendered values). If your own template overrides reference the removed classes, swap them to the `primary` equivalents listed in `CHANGELOG.md`. Homepage blog links and the post card colors were also aligned with the heading/card palette (see CHANGELOG).
+
 ## Configuration
 
 1.  **Set the theme in your site's `hugo.toml` (or `config.toml`):**
@@ -78,7 +92,7 @@ git submodule update --init --recursive
 
     This theme requires:
     *   Hugo **Extended** version.
-    *   Minimum version: **0.92.0** (recommended).
+    *   Minimum version: **0.158.0**.
 
     To ensure compatibility, especially if you plan to submit this theme to the Hugo Themes showcase, you can specify Hugo version requirements within the theme's own `hugo.toml` or `config.toml` (create one at `themes/hugo-noir/hugo.toml` if it doesn't exist) or more commonly in a `theme.toml` file at the root of the theme.
 
@@ -87,7 +101,7 @@ git submodule update --init --recursive
     [module]
       [module.hugoVersion]
         extended = true
-        min = "0.92.0"
+        min = "0.158.0"
         # max = "0.1xx.x" # Optionally specify a max version
     ```
 
@@ -101,7 +115,7 @@ git submodule update --init --recursive
 
     [languages]
       [languages.en]
-        languageName = "English"
+        label = "English"
         title = "Your Site Title (English)"
         weight = 1
         contentDir = "content/en" # Ensure you have this directory
@@ -112,7 +126,7 @@ git submodule update --init --recursive
             weight = 1
           # ... other English menu items
       [languages.es]
-        languageName = "Español"
+        label = "Español"
         title = "Your Site Title (Spanish)"
         weight = 2
         contentDir = "content/es" # Ensure you have this directory
@@ -123,7 +137,7 @@ git submodule update --init --recursive
             weight = 1
           # ... other Spanish menu items
       [languages.fr]
-        languageName = "Français"
+        label = "Français"
         title = "Your Site Title (French)"
         weight = 3
         contentDir = "content/fr" # Ensure you have this directory
@@ -146,7 +160,6 @@ git submodule update --init --recursive
       name = "Your Name"
       location = "Your Location"
       description = "Description ..."
-      profile_image = "/images/your-profile.jpg" # Place in your site's static/images/
       # Social links
       github = "https://github.com/yourusername"
       twitter = "https://twitter.com/yourusername"
@@ -165,7 +178,6 @@ git submodule update --init --recursive
           name = "Your Name"
           location = "Your Location"
           description = "Description ..."
-          profile_image = "/images/your-profile.jpg" # Place in your site's static/images/
           # Social links
           github = "https://github.com/yourusername"
           twitter = "https://twitter.com/yourusername"
@@ -341,7 +353,7 @@ features = ["dark mode", "multilingual", "tailwind css", "responsive", "contact 
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.92.0"
+    min = "0.158.0"
 ```
 
 ## Contributing
