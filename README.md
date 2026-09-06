@@ -1,42 +1,34 @@
 <h1 align=center>Hugo Noir | <a href="https://prxshetty.github.io/hugo-portfolio/" rel="nofollow">Demo</a></h1>
 
-<h4 align=center>🌑 Dark | ⚪️ Light | 🔍 Minimalist | 📱 Responsive | ⚡ Fast</h4>
-<br>
-
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/prxshetty/hugo-noir)](https://github.com/prxshetty/hugo-noir/releases/latest)
 [![View Changelog](https://img.shields.io/badge/changelog-view-blue)](CHANGELOG.md)
 [![Minimum Hugo Version](https://img.shields.io/static/v1?label=min-HUGO-version&message=>=v0.158.0&color=blue&logo=hugo)](https://github.com/gohugoio/hugo/releases/tag/v0.158.0)
 [![GitHub stars](https://img.shields.io/github/stars/prxshetty/hugo-noir?style=social)](https://github.com/prxshetty/hugo-noir/stargazers)
-[![Hugo Themes](https://img.shields.io/badge/Hugo--Themes-@Dark_Noir-blue)](https://themes.gohugo.io/themes/hugo-noir/)
+[![Hugo Themes](https://img.shields.io/badge/Hugo--Themes-@Hugo_Noir-blue)](https://themes.gohugo.io/themes/hugo-noir/)
 
----
 
 A clean, minimalistic theme for Hugo with a focus on readability, simplicity, and multilingual support.
+
 
 ![Hugo Noir Thumbnail](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/tn.png)
 
 ## Features
 
-- Responsive design
+- Responsive design (breakpoints + mobile menu overlay throughout)
 - Built with Tailwind CSS
-- Clean and minimalist aesthetic
-- Light & Dark mode support (manual toggle and OS-aware)
-- Fast loading times
-- SEO-friendly
-- Blog-ready
-- Multilingual support (En, Es, Fr configured by default)
-- Enhanced mobile navigation
-- Local time display
-- Devicon integration for tech stack display
-- Configurable region display for experiences
-- Subtle hyperlink indicators (SVGs)
-- Engaging criss-cross carousel animations
+- Light & Dark mode (manual toggle + OS-aware)
+- Blog-ready (blogs layouts, tags, post template)
+- Multilingual support (i18n/ has en/es/fr/zh-tw + example config)
+- Enhanced mobile navigation (hamburger + fullscreen overlay)
+- Devicon tech-stack display (devicon CDN + carousel)
+- Configurable region display (country field in experience entries)
+- Hyperlink indicators (external-link SVGs)
+- Criss-cross carousel animations (two counter-scrolling tech rows)
+- Clean and minimalist aesthetic (subjective, but harmless)
 
 ## Preview
 
-Here's a glimpse of the theme homepage:
-
-**Homepage (Dark Mode - Primary):**
+**Homepage (Dark Mode):**
 ![Hugo Noir Dark Mode](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/screenshot.png)
 
 **Homepage (Light Mode):**
