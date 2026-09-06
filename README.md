@@ -1,14 +1,14 @@
-<h1 align=center>Hugo Noir | <a href="https://prxshetty.github.io/hugo-portfolio/" rel="nofollow">Demo</a></h1>
+<h1 align="center">Hugo Noir | <a href="https://prxshetty.github.io/hugo-portfolio/" rel="nofollow">Demo</a></h1>
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/prxshetty/hugo-noir)](https://github.com/prxshetty/hugo-noir/releases/latest)
-[![View Changelog](https://img.shields.io/badge/changelog-view-blue)](CHANGELOG.md)
-[![Minimum Hugo Version](https://img.shields.io/static/v1?label=min-HUGO-version&message=>=v0.158.0&color=blue&logo=hugo)](https://github.com/gohugoio/hugo/releases/tag/v0.158.0)
-[![GitHub stars](https://img.shields.io/github/stars/prxshetty/hugo-noir?style=social)](https://github.com/prxshetty/hugo-noir/stargazers)
-[![Hugo Themes](https://img.shields.io/badge/Hugo--Themes-@Hugo_Noir-blue)](https://themes.gohugo.io/themes/hugo-noir/)
+<p align="center">
+  <a href="https://github.com/prxshetty/hugo-noir/releases/latest"><img src="https://img.shields.io/github/v/release/prxshetty/hugo-noir" alt="GitHub release"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-view-blue" alt="Changelog"></a>
+  <a href="https://github.com/gohugoio/hugo/releases/tag/v0.158.0"><img src="https://img.shields.io/static/v1?label=min-HUGO-version&message=%3E%3Dv0.158.0&color=blue&logo=hugo" alt="Minimum Hugo Version"></a>
+  <a href="https://github.com/prxshetty/hugo-noir/stargazers"><img src="https://img.shields.io/github/stars/prxshetty/hugo-noir?style=social" alt="GitHub stars"></a>
+  <a href="https://themes.gohugo.io/themes/hugo-noir/"><img src="https://img.shields.io/badge/Hugo--Themes-@Hugo_Noir-blue" alt="Hugo Themes"></a>
+</p>
 
-
-A clean, minimalistic theme for Hugo with a focus on readability, simplicity, and multilingual support.
-
+<p align="center">A clean, minimalistic theme for Hugo with a focus on readability, simplicity, and multilingual support.</p>
 
 ![Hugo Noir Thumbnail](https://raw.githubusercontent.com/prxshetty/hugo-noir/main/images/tn.png)
 
